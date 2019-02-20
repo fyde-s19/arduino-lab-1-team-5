@@ -1,5 +1,4 @@
 void setup() {
-  // put your setup code here, to run once:
   pinMode(LED_BUILTIN, OUTPUT);
 }
 
@@ -14,12 +13,9 @@ void dimmer(int freq, int duty){
   delay(offTime);
 }
 
+int count = 0;
+bool up = true;
 void loop() {
-  // put your main code here, to run repeatedly:
-  for (int count=1; count <= 100; count++){
-    dimmer(100, count);
-  }
-  for (int count=100; count>=0; count--){
-    dimmer(100, count);
-  }
+  dimmer(100, up ? count++ : count--);
+  up = count == 100 ? false : count == 0 ? true : up;
 }

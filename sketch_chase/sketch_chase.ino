@@ -1,5 +1,4 @@
 void setup() {
-  // put your setup code here, to run once:
   pinMode(LED_BUILTIN, OUTPUT);
 }
 
@@ -11,7 +10,6 @@ void timedBlink(int interval){
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   timedBlink(1);
   timedBlink(2);
   timedBlink(3);
