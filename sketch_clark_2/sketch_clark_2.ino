@@ -1,25 +1,30 @@
+/**
+ * This code runs once at startup.
+ */
 void setup() {
-  // put your setup code here, to run once:
   pinMode(LED_BUILTIN, OUTPUT);
 }
 
-void dimmer(int freq, int duty){
-  int period, onTime, offTime;
-  period = 1000/freq;
-  onTime = period * duty/100;
-  offTime = period - onTime;
+void dimmer(int freq, int duty) {
+  int period = 1000 / freq;
+  int onTime = period * duty / 100;
+  int offTime = period - onTime;
+  
   digitalWrite(LED_BUILTIN, HIGH);
   delay(onTime);
+  
   digitalWrite(LED_BUILTIN, LOW);
   delay(offTime);
 }
 
+/**
+ * This code is called periodically.
+ */
 void loop() {
-  // put your main code here, to run repeatedly:
-  for (int count=1; count <= 100; count++){
-    dimmer(100, count);
+  for(int i=1; i < 100; i++) {
+    dimmer(100, i);
   }
-  for (int count=100; count>=0; count--){
-    dimmer(100, count);
+  for(int i = 100; i > 0; i--){
+    dimmer(100, i);
   }
 }
